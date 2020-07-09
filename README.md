@@ -10,19 +10,6 @@ Clone the [starter repo](https://github.com/make-school-labs/tdd-bdd-challenge) 
 
 **The goal is to make each test pass before the end of the class period!**
 
-### Level 1 Challenges
-
-#### Overview
-
-Imagine you just got a job with a MeasureIt.com. They want to create an app that measures everything. You'll need some methods that can return measurements.
-
-* Area should return the area of a rectangle.
-* Perimeter should return the perimeter of a rectangle.
-* Should return the area of a circle with radius.
-* Stretch: Test that any negative widths, breadths, or radii return null
-
-You'll start by writing pending tests for these methods. Then write functions that make the tests pass.
-
 ### Level 2 Challenges
 
 #### Overview

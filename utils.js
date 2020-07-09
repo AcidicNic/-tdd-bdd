@@ -3,19 +3,22 @@
 // ========================================================
 
 const sayHello = () => {
-  return "Hello"
+    return "Hello"
 }
 
+// returns the area of a rectangle
 const area = (w, h) => {
-  // should return the area
+    return h * w
 }
 
+// returns the perimeter of a rectangle
 const perimeter = (w, h) => {
-  // should return the perimeter
+    return 2 * (h + w)
 }
 
+// returns the area of a circle
 const circleArea = r => {
-  // should return the area of the circle
+    return Math.PI * Math.pow(r, 2)
 }
 
 // ========================================================
@@ -28,31 +31,65 @@ const circleArea = r => {
 const shoppingCart = []
 
 const clearCart = () => {
-  shoppingCart.length = 0
+    shoppingCart.length = 0
 }
 
 const createItem = (name, price) => {
-  return { name, price, quantity: 1 }
+    return { name, price, quantity: 1 }
 }
 
 const getShoppingCart = () => {
-  // should return the current state of shopping cart
+    return shoppingCart
 }
 
 const addItemToCart = (item) => {
-  // should add item to shopping cart
+    if (item.quantity >= 1) {
+        let found = false
+        shoppingCart.forEach(function(cartItem) {
+            if ( cartItem.name === item.name && cartItem.price === item.price ) {
+                found = true
+                cartItem.quantity += item.quantity
+                return
+            }
+        });
+        if (!found){
+            shoppingCart.push(item)
+        }
+    }
 }
 
 const getNumItemsInCart = () => {
-  // should return the total quantity of items in cart
+    let totalItems = 0
+    shoppingCart.forEach(function(cartItem) {
+        totalItems += cartItem.quantity
+    });
+    return totalItems
 }
 
 const removeItemFromCart = (item) => {
-  // should remove item from shopping cart
+    shoppingCart.forEach(function(cartItem, i, cart) {
+        if ( cartItem.name === item.name && cartItem.price === item.price ) {
+            if (cartItem.quantity > item.quantity) {
+                cartItem.quantity -= item.quantity
+            } else {
+                cart.splice(i, 1);
+            }
+        }
+    });
+
+}
+
+const totalCostInCart = () => {
+    let totalCost = 0;
+    shoppingCart.forEach(function(cartItem) {
+        totalCost += cartItem.price
+    });
+    return totalCost
+
 }
 
 module.exports = {
-  sayHello, area, perimeter, circleArea,
-  clearCart, createItem, getShoppingCart, addItemToCart,
-  getNumItemsInCart, removeItemFromCart
+    sayHello, area, perimeter, circleArea,
+    clearCart, createItem, getShoppingCart, addItemToCart,
+    getNumItemsInCart, removeItemFromCart, totalCostInCart
 }
